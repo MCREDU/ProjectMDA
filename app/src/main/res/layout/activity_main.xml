@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/winred">
+
+    <!-- Title and Image Section -->
+    <!-- Title and Image Section -->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:theme="@style/AppToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside">
+
+            <ImageView
+                android:id="@+id/left_logo"
+                android:layout_width="@dimen/toolbar_icon_size"
+                android:layout_height="@dimen/toolbar_icon_size"
+                android:layout_marginStart="@dimen/toolbar_margin"
+                android:contentDescription="Zaza Legacy Wines Logo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/Zlogo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ZAZA LEGACY WINES"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/menu_button"
+                app:layout_constraintStart_toEndOf="@id/left_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/menu_button"
+                android:layout_width="@dimen/toolbar_icon_size"
+                android:layout_height="@dimen/toolbar_icon_size"
+                android:layout_marginEnd="@dimen/toolbar_margin"
+                android:contentDescription="Menu Button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/three"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <!-- Wine Details Section -->
+    <TextView
+        android:id="@+id/tvOrigin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You know that sinking feeling when guests arrive and you have no decent wine to serve? Becoming a member of the  Legacy wines solves that problem.Membership secures your personal attention ,exclusive, limited release wines researved only for members; special offers and free delivery Door-to-Door delivery "
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
+        android:gravity="center"
+
+        />
+
+    <TextView
+        android:id="@+id/tvBouquet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="To Become Part Of Our Exteneded Family"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tvTaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Taste: Red/Pink fruit: Summer Strawberries with the freshness of watermelon."
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp" />
+
+    <!-- Price Section -->
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R 500"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_marginTop="16dp" />
+
+    <!-- Add to Cart Button -->
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD TO CART"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white" />
+
+    <!-- Age Restriction -->
+    <TextView
+        android:id="@+id/tvAgeRestriction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DRINK RESPONSIBLY. NOT FOR SALE TO PERSONS UNDER THE AGE OF 18"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="16dp"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_gravity="center" />
+
+</LinearLayout>
