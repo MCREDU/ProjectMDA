@@ -46,11 +46,15 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.annotation)
     implementation(libs.activity)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.database)
+
+
 
 }
