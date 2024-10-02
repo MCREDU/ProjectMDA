@@ -9,9 +9,6 @@
     android:padding="16dp"
     android:background="@color/winred">
 
-    <!-- Title and Image Section -->
-    <!-- Title and Image Section -->
-    <!-- Wine Details Section -->
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="183dp"
@@ -21,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.9"
-            android:background="@drawable/FrontBackground1"
+            android:background="@drawable/frontbackground1"
             app:layout_constraintHorizontal_chainStyle="spread_inside">
 
             <ImageView
@@ -31,7 +28,7 @@
                 android:layout_marginStart="4dp"
                 android:contentDescription="Zaza Legacy Wines Logo"
                 android:scaleType="fitCenter"
-                android:src="@drawable/Zlogo"
+                android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -139,9 +136,6 @@
         android:textAllCaps="true"
         android:gravity="center"
         android:layout_marginTop="8dp" />
-
-
-
 
 
 </LinearLayout>

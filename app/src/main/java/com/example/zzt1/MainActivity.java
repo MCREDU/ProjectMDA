@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.example.zzt1.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,15 +16,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Link buttons with the layout
-        signUpBtn = findViewById(R.id.sign_up_btn);
-        loginBtn = findViewById(R.id.login_btn);
+//        signUpBtn = findViewById(R.id;
+//        loginBtn = findViewById(R.id.login_btn);
 
         // Handle Sign-Up button click
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Navigate to the SignUpActivity (implement separately)
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(MainActivity.this, Signup.class);
                 startActivity(intent);
             }
         });
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to the LoginActivity (implement separately)
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, login.class);
                 startActivity(intent);
             }
         });

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/barrelbackground"  <ackground image -->
+    android:background="@drawable/barrelbackground"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ScrollViewCount">
 
 <LinearLayout
 android:layout_width="match_parent"
@@ -12,16 +14,15 @@ android:layout_height="wrap_content"
 android:orientation="vertical"
 android:gravity="center_horizontal">
 
-<!-- Header Image (Brand) -->
 <ImageView
     android:id="@+id/logo_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@drawable/zaza_legacy_logo"
+    android:src="@drawable/logo"
     android:contentDescription="Zaza Legacy Wines"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
-<!-- Wine Name -->
 <TextView
     android:id="@+id/wine_name"
     android:layout_width="wrap_content"
@@ -31,19 +32,19 @@ android:gravity="center_horizontal">
     android:textStyle="bold"
     android:textColor="@android:color/white"
     android:gravity="center"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
-<!-- Wine Image -->
 <ImageView
     android:id="@+id/wine_image"
     android:layout_width="200dp"
     android:layout_height="300dp"
-    android:src="@drawable/natural_sweet_rose"
+    android:src="@drawable/sweetrose"
     android:layout_gravity="center"
     android:contentDescription="Natural Sweet Rose"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
-<!-- Wine Details -->
 <TextView
     android:id="@+id/wine_origin"
     android:layout_width="wrap_content"
@@ -52,17 +53,19 @@ android:gravity="center_horizontal">
     android:textSize="16sp"
     android:textColor="@android:color/white"
     android:gravity="center"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
 <TextView
     android:id="@+id/wine_bouquet"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Bouquet: Rose Petals, Cotton Candy & Raspberries on the nose."
+    android:text="Bouquet: Rose Petals, Cotton Candy Raspberries on the nose."
     android:textSize="14sp"
     android:textColor="@android:color/white"
     android:gravity="center"
-    android:layout_marginBottom="8dp"/>
+    android:layout_marginBottom="8dp"
+    tools:ignore="HardcodedText" />
 
 <TextView
     android:id="@+id/wine_taste"
@@ -72,9 +75,9 @@ android:gravity="center_horizontal">
     android:textSize="14sp"
     android:textColor="@android:color/white"
     android:gravity="center"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
-<!-- Price -->
 <TextView
     android:id="@+id/wine_price"
     android:layout_width="wrap_content"
@@ -84,21 +87,19 @@ android:gravity="center_horizontal">
     android:textStyle="bold"
     android:textColor="@android:color/white"
     android:gravity="center"
-    android:layout_marginBottom="16dp"/>
+    android:layout_marginBottom="16dp"
+    tools:ignore="HardcodedText" />
 
-<!-- Add to Cart Button -->
 <Button
     android:id="@+id/add_to_cart_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Add to Cart"
     android:padding="10dp"
     android:textSize="18sp"
     android:backgroundTint="@android:color/black"
     android:textColor="@android:color/white"/>
 </LinearLayout>
 
-    <!-- Footer (Age Restriction) -->
 <TextView
 android:id="@+id/wine_footer"
 android:layout_width="wrap_content"
@@ -107,5 +108,6 @@ android:text="DRINK RESPONSIBLY. NOT FOR SALE TO PERSONS UNDER THE AGE OF 18"
 android:textSize="12sp"
 android:textColor="@android:color/white"
 android:gravity="center"
-android:layout_marginTop="16dp"/>
+android:layout_marginTop="16dp"
+    tools:ignore="HardcodedText" />
     </ScrollView>
