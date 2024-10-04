@@ -70,7 +70,7 @@
         android:id="@+id/tvOrigin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You know that sinking feeling when guests arrive and you have no decent wine to serve? Becoming a member of the  Legacy wines solves that problem.Membership secures your personal attention ,exclusive, limited release wines researved only for members; special offers and free delivery  "
+        android:text="You know that sinking feeling you get when guests arrive and you have no decent wine to serve? Becoming a member of the  Legacy wines solves that problem.Membership secures your personal attention ,exclusive, limited release wines researved only for members; special offers and free Door to Door delivery  "
         android:textColor="@android:color/white"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
