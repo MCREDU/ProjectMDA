@@ -54,14 +54,14 @@
                 android:id="@+id/menu_button"
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="56dp"
                 android:contentDescription="Menu Button"
                 android:scaleType="fitCenter"
-                android:src="@drawable/three"
+                android:src="@drawable/baseline_view_headline_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.585" />
+                app:layout_constraintVertical_bias="0.345" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -78,64 +78,18 @@
 
         />
 
-    <TextView
-        android:id="@+id/tvBouquet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="To Become Part Of Our Exteneded Family"
-        android:textColor="@android:color/white"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="1dp"
-        android:gravity="center"
-        android:scaleType="fitCenter"
-        android:padding="16dp">
-
-        <Button
-            android:id="@+id/sign_up_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="2dp"
-            android:padding="10dp"
-            android:text="Sign Up"
-            android:backgroundTint="@color/white"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:padding="10dp"
-            android:layout_marginStart="36dp"
-            android:text="Login"
-            android:backgroundTint="@color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-
-
 
     <TextView
         android:id="@+id/tvTaste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Our Products"
+        android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="30dp"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:gravity="center"
-        android:layout_marginTop="8dp" />
+        android:textStyle="bold" />
 
 
 </LinearLayout>
