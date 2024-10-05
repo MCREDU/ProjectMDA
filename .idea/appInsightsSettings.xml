@@ -10,9 +10,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.zzt1" />
-                  <option name="mobileSdkAppId" value="1:833026752943:android:24d9f90e0ad4db6e3f2f5a" />
-                  <option name="projectId" value="zzt1-72d37" />
-                  <option name="projectNumber" value="833026752943" />
+                  <option name="mobileSdkAppId" value="1:1042217000574:android:8dde872875c1f7f75c822f" />
+                  <option name="projectId" value="zzt1-67b8b" />
+                  <option name="projectNumber" value="1042217000574" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

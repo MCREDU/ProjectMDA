@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "833026752943",
-    "firebase_url": "https://zzt1-72d37-default-rtdb.firebaseio.com",
-    "project_id": "zzt1-72d37",
-    "storage_bucket": "zzt1-72d37.appspot.com"
+    "project_number": "1042217000574",
+    "firebase_url": "https://zzt1-67b8b-default-rtdb.firebaseio.com",
+    "project_id": "zzt1-67b8b",
+    "storage_bucket": "zzt1-67b8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833026752943:android:24d9f90e0ad4db6e3f2f5a",
+        "mobilesdk_app_id": "1:1042217000574:android:8dde872875c1f7f75c822f",
         "android_client_info": {
           "package_name": "com.example.zzt1"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA7aEM9NQsWrXjUVbYvUJrtahes0MGb1Go"
+          "current_key": "AIzaSyAb0mWrwf56iswyBTIJ5qYMAVE6w2pPMYM"
         }
       ],
       "services": {
