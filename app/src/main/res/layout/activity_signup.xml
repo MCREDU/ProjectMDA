@@ -14,14 +14,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Add logo ImageView here -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="226dp"
+            android:layout_height="230dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:contentDescription="App Logo"
+            android:src="@drawable/logo" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="50dp"
             android:padding="20dp"
             tools:ignore="UselessParent">
-
 
             <EditText
                 android:layout_width="350dp"
@@ -65,14 +74,13 @@
                 android:id="@+id/signup_button"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                app:cornerRadius = "30dp"/>
-
+                app:cornerRadius="30dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/loginRedirectText"
-                android:text="Already an user? Login"
+                android:text="Already a user? Login"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:textSize="18sp"
