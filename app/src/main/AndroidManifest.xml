@@ -32,9 +32,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
+
+        <meta-data
+            android:name="android.permission.INTERNET"
+            android:value="true" />
 
     </application>
-
 </manifest>

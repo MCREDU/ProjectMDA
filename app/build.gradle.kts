@@ -56,6 +56,9 @@ dependencies {
     implementation(libs.annotation)
     implementation(libs.activity)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.gbutton)
+    implementation(libs.play.services.auth)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
