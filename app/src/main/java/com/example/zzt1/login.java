@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -22,14 +21,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 public class login extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
-    private TextView signupRedirectText;
-    private Button loginButton;
     private FirebaseAuth auth;
     TextView forgotPassword;
     GoogleSignInButton googleBtn;
@@ -41,8 +36,8 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
-        loginButton = findViewById(R.id.login_button);
-        signupRedirectText = findViewById(R.id.signUpRedirectText);
+        Button loginButton = findViewById(R.id.login_button);
+        TextView signupRedirectText = findViewById(R.id.signUpRedirectText);
         forgotPassword = findViewById(R.id.forgot_password);
         googleBtn = findViewById(R.id.googleBtn);
         auth = FirebaseAuth.getInstance();
@@ -56,12 +51,7 @@ public class login extends AppCompatActivity {
                                 Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(login.this, MainActivity.class));
                                 finish();
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(login.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                            }).addOnFailureListener(e -> Toast.makeText(login.this, "Login Failed", Toast.LENGTH_SHORT).show());
                 } else {
                     loginPassword.setError("Empty fields are not allowed");
                 }
@@ -71,12 +61,7 @@ public class login extends AppCompatActivity {
                 loginEmail.setError("Please enter correct email");
             }
         });
-        signupRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(login.this, Signup.class));
-            }
-        });
+        signupRedirectText.setOnClickListener(v -> startActivity(new Intent(login.this, Signup.class)));
         forgotPassword.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(login.this);
             View dialogView = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
@@ -89,15 +74,12 @@ public class login extends AppCompatActivity {
                     Toast.makeText(login.this, "Enter your registered email id", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(login.this, "Check your email", Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
-                        } else {
-                            Toast.makeText(login.this, "Unable to send, failed", Toast.LENGTH_SHORT).show();
-                        }
+                auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        Toast.makeText(login.this, "Check your email", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(login.this, "Unable to send, failed", Toast.LENGTH_SHORT).show();
                     }
                 });
             });
@@ -136,11 +118,8 @@ public class login extends AppCompatActivity {
                         }
                     }
                 });
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signInIntent = gClient.getSignInIntent();
-                activityResultLauncher.launch(signInIntent);
-            }
+        googleBtn.setOnClickListener(view -> {
+            Intent signInIntent = gClient.getSignInIntent();
+            activityResultLauncher.launch(signInIntent);
         });
     }}

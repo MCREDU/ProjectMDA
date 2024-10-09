@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/frontbackground1"
+    android:background="@drawable/bluebc"
     android:orientation="vertical"
-    tools:context=".SignUpActivity">
+    tools:context=".Signup">
 
     <ScrollView
         android:layout_width="match_parent"
