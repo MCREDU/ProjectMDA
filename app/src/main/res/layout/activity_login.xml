@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:padding="8dp"
+            android:padding="1dp"
             android:text="Not yet registered? Sign Up"
             android:textAlignment="center"
             android:textColor="@color/winred"
