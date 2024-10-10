@@ -5,38 +5,44 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-
-    private Button signUpBtn, loginBtn;
+    TextView userName;
+    Button logout;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Link buttons with the layout
-//        signUpBtn = findViewById(R.id;
-//        loginBtn = findViewById(R.id.login_btn);
+        // Initialize UI elements
+        logout = findViewById(R.id.logout);
+        userName = findViewById(R.id.userName);
 
-        // Handle Sign-Up button click
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to the SignUpActivity (implement separately)
-                Intent intent = new Intent(MainActivity.this, Signup.class);
-                startActivity(intent);
-            }
-        });
+        // Initialize Firebase authentication
+        auth = FirebaseAuth.getInstance();
 
-        // Handle Login button click
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        // Get the currently signed-in user
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            // Display the logged-in user's email
+            userName.setText(email);
+        }
+
+        // Set logout functionality
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Navigate to the LoginActivity (implement separately)
-                Intent intent = new Intent(MainActivity.this, login.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                auth.signOut();
+                finish();
+                startActivity(new Intent(MainActivity.this, login.class));
             }
         });
     }
 }
+

@@ -64,18 +64,52 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <!-- Logged in user information -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:id="@+id/welcome"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:id="@+id/userName"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:id="@+id/logout"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        app:cornerRadius="15dp"/>
+
+    <!-- Original content -->
     <TextView
         android:id="@+id/tvOrigin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You know that sinking feeling you get when guests arrive and you have no decent wine to serve? Becoming a member of the  Legacy wines solves that problem.Membership secures your personal attention ,exclusive, limited release wines researved only for members; special offers and free Door to Door delivery  "
+        android:text="You know that sinking feeling you get when guests arrive and you have no decent wine to serve? Becoming a member of the Legacy wines solves that problem. Membership secures your personal attention, exclusive, limited release wines reserved only for members; special offers and free Door to Door delivery."
         android:textColor="@android:color/white"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
-        android:gravity="center"
-
-        />
-
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/tvTaste"
@@ -88,6 +122,5 @@
         android:textColor="@android:color/white"
         android:textSize="30dp"
         android:textStyle="bold" />
-
 
 </LinearLayout>

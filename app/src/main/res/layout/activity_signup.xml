@@ -82,7 +82,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="Already a user? Login now"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
         </LinearLayout>
