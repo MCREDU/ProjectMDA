@@ -1,4 +1,4 @@
-package com.example.zzt1.ui.home;
+package com.example.zzt1.ui.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

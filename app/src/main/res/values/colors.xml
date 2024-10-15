@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="winred">#7e0f1d</color>
     <color name="beige">#80ebd9bc</color>
+    <color name="transparentWhite">#80FFFFFF</color>
+    <color name="transparentPrimary">#80FF5722</color>
 </resources>

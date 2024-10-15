@@ -13,10 +13,20 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">@drawable/frontbackground1</item>
 
         <item name="android:textColor">#FFFFFF</item>
         <!-- Add other common toolbar attributes here -->
     </style>
+
+    <style name="Theme.ZZT1.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ZZT1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ZZT1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

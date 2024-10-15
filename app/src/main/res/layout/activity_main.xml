@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/winred">
 
     <androidx.appcompat.widget.Toolbar
@@ -99,15 +98,7 @@
         app:cornerRadius="15dp"/>
 
     <!-- Original content -->
-    <TextView
-        android:id="@+id/tvOrigin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="You know that sinking feeling you get when guests arrive and you have no decent wine to serve? Becoming a member of the Legacy wines solves that problem. Membership secures your personal attention, exclusive, limited release wines reserved only for members; special offers and free Door to Door delivery."
-        android:textColor="@android:color/white"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitCenter"
-        android:gravity="center" />
+
 
     <TextView
         android:id="@+id/tvTaste"
