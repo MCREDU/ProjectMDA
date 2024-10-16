@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"
-                android:text="Bouquet: A delightfully fragrant sweet white wine with hints of tropical fruit. Fresh and approachable."
+                android:text="Bouquet: A delightfully fragrant sweet white wine with hint of tropical fruit. Fresh and approachable."
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
