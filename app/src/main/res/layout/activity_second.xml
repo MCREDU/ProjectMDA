@@ -19,37 +19,22 @@
 
             <ImageView
                 android:id="@+id/left_logo"
-                android:layout_width="80dp"
-                android:layout_height="97dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="148dp"
+                android:layout_height="155dp"
+                android:layout_marginStart="120dp"
                 android:contentDescription="Zaza Legacy Wines Logo"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.36" />
-
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:gravity="center"
-                android:text="ZAZA LEGACY WINES"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/left_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.496" />
+                app:layout_constraintVertical_bias="0.571" />
 
             <ImageView
                 android:id="@+id/menu_button"
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="328dp"
                 android:contentDescription="Menu Button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"

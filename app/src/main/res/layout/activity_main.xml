@@ -18,38 +18,22 @@
 
             <ImageView
                 android:id="@+id/left_logo"
-                android:layout_width="99dp"
-                android:layout_height="112dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="148dp"
+                android:layout_height="155dp"
+                android:layout_marginStart="120dp"
                 android:contentDescription="Zaza Legacy Wines Logo"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="143dp"
-                android:layout_height="353dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:text="ZAZA LEGACY WINES"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/menu_button"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/left_logo"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.82" />
 
             <ImageView
                 android:id="@+id/menu_button"
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="312dp"
                 android:contentDescription="Menu Button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"
