@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/barrelbackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
+    <!-- Toolbar with Zaza Legacy Wines Logo and Title -->
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintHorizontal_chainStyle="spread_inside">
+        android:layout_height="183dp"
+        android:background="@drawable/header_3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/left_logo"
-                android:layout_width="99dp"
-                android:layout_height="112dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="80dp"
+                android:layout_height="97dp"
+                android:layout_marginStart="8dp"
                 android:contentDescription="Zaza Legacy Wines Logo"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.36" />
 
             <TextView
                 android:id="@+id/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:gravity="center"
-                android:text="Cabernet Sauvignon"
+                android:text="ZAZA LEGACY WINES"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/menu_button"
                 app:layout_constraintStart_toEndOf="@id/left_logo"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.496" />
 
             <ImageView
                 android:id="@+id/menu_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="32dp"
+                android:layout_width="@dimen/toolbar_icon_size"
+                android:layout_height="@dimen/toolbar_icon_size"
+                android:layout_marginEnd="4dp"
                 android:contentDescription="Menu Button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"
@@ -54,86 +57,111 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.496" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/wine_image"
+    <!-- Event Booking Query Section -->
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:text="Event Booking Query"
+        android:textColor="@color/winred"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/beige"
-        android:contentDescription="Wine Bottle"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:src="@drawable/cabernet" />
+        android:layout_marginTop="20dp" />
 
-    <LinearLayout
+    <!-- Name & Surname Input Field -->
+
+    <!-- Number of Guests Input Field -->
+    <EditText
+        android:id="@+id/etNameSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/beige"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:hint="Name and Surname"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white" />
 
-        <TextView
-            android:id="@+id/wine_origin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:text="Wine of Origin - McGregor"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:textColorHint="@android:color/white"
+        android:inputType="number"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/wine_bouquet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:text="Bouquet: "
-            android:textColor="#000000"
-            android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Address"
+        android:textColorHint="@android:color/white"
+        android:inputType="textEmailAddress"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/wine_taste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="Black and red fruit: a fusion of dark fruits, cherries and cassis with velvety texture."
-            android:textColor="#000000"
-            android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etNumberOfGuests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Guests"
+        android:textColorHint="@android:color/white"
+        android:inputType="number"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/wine_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="R 500"
-            android:textColor="@color/winred"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
-    </LinearLayout>
 
+    <!-- Date of Booking Input Field -->
+    <EditText
+        android:id="@+id/etDateOfBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date of Booking"
+        android:textColorHint="@android:color/white"
+        android:inputType="date"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:textColor="@android:color/white" />
+
+    <!-- The Request Input Field -->
+    <EditText
+        android:id="@+id/etRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="The Request"
+        android:textColorHint="@android:color/white"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_background"
+        android:padding="12dp"
+        android:textColor="@android:color/white"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
+
+    <!-- Submit Button -->
     <Button
-        android:id="@+id/add_to_cart_button"
+        android:id="@+id/btnSubmitBooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@color/winred"
-        android:text="ADD TO CART"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF" />
+        android:padding="12dp" />
 
-    <TextView
-        android:id="@+id/disclaimer_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="8dp"
-        android:text="Enjoy Responsibly"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp" />
 </LinearLayout>
