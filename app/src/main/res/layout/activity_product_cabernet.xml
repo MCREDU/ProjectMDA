@@ -11,13 +11,6 @@
         android:background="@drawable/barrelbackground"
         android:padding="16dp">
 
-        <!-- Wine Title -->
-
-        <!-- Wine Image -->
-
-        <!-- Wine Details Container -->
-
-        <!-- Add to Cart Button -->
 
         <TextView
             android:id="@+id/wine_title"

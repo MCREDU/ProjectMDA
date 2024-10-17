@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.gbutton)
     implementation(libs.play.services.auth)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

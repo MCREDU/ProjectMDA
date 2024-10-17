@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@color/white">
 
+    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="183dp"
@@ -81,9 +82,7 @@
         android:layout_gravity="center"
         app:cornerRadius="15dp"/>
 
-    <!-- Original content -->
-
-
+    <!-- Title for products section -->
     <TextView
         android:id="@+id/tvTaste"
         android:layout_width="match_parent"
@@ -93,7 +92,18 @@
         android:text="Our Products"
         android:textAllCaps="true"
         android:textColor="@color/winred"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
+
+    <!-- RecyclerView for products -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>
