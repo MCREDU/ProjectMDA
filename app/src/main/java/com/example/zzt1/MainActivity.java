@@ -80,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     startActivity(intent);
                 }
+                if (item.getItemId() == R.id.nav_faq) {
+                    Intent intent = new Intent(MainActivity.this, FAQ.class);
+                    startActivity(intent);
+                }
 
                 if (item.getItemId() == R.id.nav_logout) {
                     auth.signOut();

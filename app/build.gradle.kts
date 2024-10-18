@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.squareup.picasso)
+    implementation ("com.squareup.picasso:picasso:2.8")
+
 
 
     testImplementation(libs.junit)

@@ -76,6 +76,12 @@ public class ProductDetailActivity extends AppCompatActivity {
                     startActivity(bookingIntent);
                 }
 
+                if (item.getItemId() == R.id.nav_faq) {
+                    // Navigate to the GalleryActivity
+                    Intent intent = new Intent(ProductDetailActivity.this, FAQ.class); // Change to your gallery activity class
+                    startActivity(intent);
+                }
+
                 if (id == R.id.nav_logout) {
                     auth.signOut();
                     Intent logoutIntent = new Intent(ProductDetailActivity.this, login.class);

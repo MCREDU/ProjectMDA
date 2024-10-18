@@ -48,7 +48,7 @@
             android:name=".SecondActivity"
             android:exported="false" />
         <activity
-            android:name=".WinePageActivity"
+            android:name=".FAQ"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

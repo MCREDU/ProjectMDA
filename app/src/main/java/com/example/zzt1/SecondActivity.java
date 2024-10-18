@@ -96,6 +96,12 @@ public class SecondActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if (item.getItemId() == R.id.nav_booking) {
+                    // Navigate to the GalleryActivity
+                    Intent intent = new Intent(SecondActivity.this, FAQ.class); // Change to your gallery activity class
+                    startActivity(intent);
+                }
+
 // Handle logout item selection
                 if (item.getItemId() == R.id.nav_logout) {
                     auth.signOut(); // Sign out from Firebase
