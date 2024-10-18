@@ -17,6 +17,7 @@ activity = "1.9.2"
 firebaseDatabase = "21.0.0"
 firebaseAuth = "23.0.0"
 firebaseFirestore = "25.1.0"
+picassoVersion = "2.8"
 playServicesAuth = "21.2.0"
 
 [libraries]
@@ -40,6 +41,7 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+squareup-picasso = { module = "com.squareup.picasso:picasso", version.ref = "picassoVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

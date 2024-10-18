@@ -1,5 +1,7 @@
 package com.example.zzt1;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -19,9 +21,11 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private final List<Product> productList;
+    private final Context context;
 
     // Constructor for the adapter
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(Context context, List<Product> productList) {
+        this.context = context;
         this.productList = productList;
     }
 
@@ -43,8 +47,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productPrice.setText("R " + product.getPrice());
 
         // Change the text colors to your desired color
-        holder.productName.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY)); // Change to your desired color
-        holder.productPrice.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY)); // Change to your desired color
+        holder.productName.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY));
+        holder.productPrice.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY));
 
         // Use the AsyncTask to load the image from the URL without Glide
         if (product.getImage_name() != null && !product.getImage_name().isEmpty()) {
@@ -53,6 +57,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             // Set a placeholder image if no image URL is provided
             holder.productImage.setImageResource(R.drawable.sweetwine);  // Use a default image in your drawable
         }
+
+        // Handle click on product image to open ProductDetailActivity
+        holder.productImage.setOnClickListener(v -> {
+            // Create an intent to open ProductDetailActivity
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+
+            // Pass the product name instead of the document ID
+            intent.putExtra("PRODUCT_NAME", product.getProduct_name());
+
+            // Start the ProductDetailActivity
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -75,7 +91,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     // AsyncTask to load the image from a URL in the background
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
         public DownloadImageTask(ImageView bmImage) {
@@ -87,7 +103,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             String urlDisplay = urls[0];
             Bitmap productImage = null;
             try {
-                InputStream in = new java.net.URL(urlDisplay).openStream();
+                InputStream in = new URL(urlDisplay).openStream();
                 productImage = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 e.printStackTrace();

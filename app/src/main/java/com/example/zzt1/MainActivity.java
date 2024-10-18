@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize RecyclerView
         productList = new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 items in a row
-        productAdapter = new ProductAdapter(productList);
-        recyclerView.setAdapter(productAdapter);
+        productAdapter = new ProductAdapter(this, productList);  // Correct initialization
+        recyclerView.setAdapter(productAdapter);  // Set the correct adapter
 
         // Fetch products from Firestore
         fetchProducts();
@@ -137,5 +137,4 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

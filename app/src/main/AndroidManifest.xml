@@ -30,6 +30,7 @@
             android:name=".login"
             android:exported="false" />
 
+        <!-- Drawer Activity -->
         <activity
             android:name=".DrawerActivity"
             android:exported="true"
@@ -51,6 +52,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Product Detail Activity -->
+        <activity
+            android:name=".ProductDetailActivity"
             android:exported="false" />
 
         <!-- Required for Internet usage -->
