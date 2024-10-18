@@ -119,6 +119,11 @@ public class FAQ extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if (item.getItemId() == R.id.nav_cart) {
+                    Intent intent = new Intent(FAQ.this, CartActivity.class);
+                    startActivity(intent);
+                }
+
                 if (item.getItemId() == R.id.nav_logout) {
                     auth.signOut();
                     Intent intent = new Intent(FAQ.this, login.class);

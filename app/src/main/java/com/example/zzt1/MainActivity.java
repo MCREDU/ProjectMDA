@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         // Initialize UI elements
         menuButton = findViewById(R.id.menu_button);
         userName = findViewById(R.id.userName);
-        logoutButton = findViewById(R.id.logout);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         recyclerView = findViewById(R.id.recyclerView);
@@ -84,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, FAQ.class);
                     startActivity(intent);
                 }
+                if (item.getItemId() == R.id.nav_cart) {
+                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
 
                 if (item.getItemId() == R.id.nav_logout) {
                     auth.signOut();
@@ -95,17 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                auth.signOut();
-                Intent intent = new Intent(MainActivity.this, login.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
             }
         });
 

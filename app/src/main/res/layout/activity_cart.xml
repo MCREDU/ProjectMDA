@@ -10,8 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="183dp"
-        android:background="@drawable/header_2"
-        app:layout_constraintHorizontal_chainStyle="spread_inside">
+        android:background="@drawable/header_2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,7 +33,7 @@
                 android:id="@+id/menu_button"
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_marginEnd="312dp"
+                android:layout_marginEnd="328dp"
                 android:contentDescription="Menu Button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"
@@ -46,52 +45,52 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Logged in user information -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:id="@+id/welcome"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/winred"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:id="@+id/userName"
-        android:textColor="@color/winred"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"/>
-
-    <!-- Title for products section -->
-    <TextView
-        android:id="@+id/tvTaste"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Our Products"
-        android:textAllCaps="true"
-        android:textColor="@color/winred"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <!-- RecyclerView for products -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <!-- Main Content -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"/>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Heading for Cart -->
+        <TextView
+            android:id="@+id/cart_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yourgi Cart"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/winred"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Cart Items Layout -->
+        <LinearLayout
+            android:id="@+id/cart_items_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"/>
+
+        <!-- Total Price Text -->
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: R 0.00"
+            android:textSize="18sp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Checkout Button -->
+        <Button
+            android:id="@+id/checkout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Checkout"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

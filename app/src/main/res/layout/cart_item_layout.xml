@@ -1,0 +1,72 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Product Image -->
+    <ImageView
+        android:id="@+id/cart_item_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="Product Image"/>
+
+    <!-- Vertical Layout for Product Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/cart_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp" />
+
+        <!-- Horizontal Layout for Price and Quantity Changer -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Product Price -->
+            <TextView
+                android:id="@+id/cart_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp" />
+
+            <!-- Decrease Button -->
+            <Button
+                android:id="@+id/cart_item_decrease"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="5dp"
+                android:text="-"
+                android:contentDescription="Decrease quantity"/>
+
+            <!-- Quantity -->
+            <TextView
+                android:id="@+id/cart_item_quantity"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+            <!-- Increase Button -->
+            <Button
+                android:id="@+id/cart_item_increase"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="5dp"
+                android:text="+"
+                android:contentDescription="Increase quantity"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +22,23 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductDetailActivity extends AppCompatActivity {
 
     private ImageView menuButton;
     private TextView productName;
     private TextView productPrice;
     private TextView productDescription;
-    private ImageView productImage; // Add ImageView for product image
+    private ImageView productImage;  // Add ImageView for product image
+    private Button addToCartButton;  // Add this line for the button
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
+
+    public static List<CartItem> cart = new ArrayList<>();  // Store cart items
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +47,11 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // Initialize UI elements
         menuButton = findViewById(R.id.menu_button);
-        productImage = findViewById(R.id.product_image); // Initialize product image view
+        productImage = findViewById(R.id.product_image);  // Initialize product image view
         productName = findViewById(R.id.product_name);
         productPrice = findViewById(R.id.product_price);
         productDescription = findViewById(R.id.product_description);
+        addToCartButton = findViewById(R.id.add_to_cart_button);  // Initialize button
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
@@ -57,6 +65,32 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
+        });
+
+        // Handle Add to Cart button click
+        addToCartButton.setOnClickListener(v -> {
+            String name = productName.getText().toString();
+            double price = Double.parseDouble(productPrice.getText().toString().replace("R ", ""));
+            String imageUrl = "default_image_url";  // You can set this dynamically as well
+
+            // Check if item is already in the cart
+            boolean itemExists = false;
+            for (CartItem item : cart) {
+                if (item.getProductName().equals(name)) {
+                    item.setQuantity(item.getQuantity() + 1);  // Increase quantity if it exists
+                    itemExists = true;
+                    break;
+                }
+            }
+
+            // If not in the cart, add new item
+            if (!itemExists) {
+                CartItem cartItem = new CartItem(name, price, imageUrl, 1);
+                cart.add(cartItem);
+            }
+
+            // Show a confirmation message
+            Toast.makeText(ProductDetailActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
         });
 
         // Set navigation item selection listener
@@ -77,11 +111,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
 
                 if (item.getItemId() == R.id.nav_faq) {
-                    // Navigate to the GalleryActivity
-                    Intent intent = new Intent(ProductDetailActivity.this, FAQ.class); // Change to your gallery activity class
+                    // Navigate to the FAQ Activity
+                    Intent intent = new Intent(ProductDetailActivity.this, FAQ.class);
                     startActivity(intent);
                 }
-
+                if (item.getItemId() == R.id.nav_cart) {
+                    Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
                 if (id == R.id.nav_logout) {
                     auth.signOut();
                     Intent logoutIntent = new Intent(ProductDetailActivity.this, login.class);
@@ -96,7 +133,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Fetch and display product details from Firestore
+        // Fetch product details
         fetchProductDetails();
     }
 
@@ -115,7 +152,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                             // Fetch the data from the document
                             String name = documentSnapshot.getString("product_name");
-                            // Get the price as a number (double) and format it as a string for display
                             double price = documentSnapshot.getDouble("price");
                             String formattedPrice = String.format("R %.2f", price);  // Format price to 2 decimal places
                             String description = documentSnapshot.getString("description");

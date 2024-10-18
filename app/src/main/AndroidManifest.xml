@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -37,19 +38,22 @@
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.ZZT1.NoActionBar">
             <intent-filter>
-                <!-- This ensures DrawerActivity is used for subsequent main navigation -->
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <!-- Other Activities -->
+        <!-- Second Activity -->
         <activity
             android:name=".SecondActivity"
             android:exported="false" />
+
+        <!-- FAQ Activity -->
         <activity
             android:name=".FAQ"
             android:exported="false" />
+
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
@@ -59,7 +63,12 @@
             android:name=".ProductDetailActivity"
             android:exported="false" />
 
-        <!-- Required for Internet usage -->
+        <!-- Cart Activity -->
+        <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+
+        <!-- Meta-data for Internet permission -->
         <meta-data
             android:name="android.permission.INTERNET"
             android:value="true" />

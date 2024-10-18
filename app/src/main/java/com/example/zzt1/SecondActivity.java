@@ -96,9 +96,14 @@ public class SecondActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                if (item.getItemId() == R.id.nav_booking) {
+                if (item.getItemId() == R.id.nav_faq) {
                     // Navigate to the GalleryActivity
                     Intent intent = new Intent(SecondActivity.this, FAQ.class); // Change to your gallery activity class
+                    startActivity(intent);
+                }
+
+                if (item.getItemId() == R.id.nav_cart) {
+                    Intent intent = new Intent(SecondActivity.this, CartActivity.class);
                     startActivity(intent);
                 }
 
