@@ -1,0 +1,9 @@
+runtime: nodejs20
+env: standard
+
+# Ensure the correct entrypoint is provided for your app to start
+entrypoint: node server.js
+
+handlers:
+  - url: /.*
+    script: auto

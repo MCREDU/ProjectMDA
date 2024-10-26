@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
@@ -62,6 +63,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.squareup.picasso)
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation(libs.volley)
 
 
 

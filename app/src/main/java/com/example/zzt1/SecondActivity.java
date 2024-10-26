@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -92,13 +92,13 @@ public class SecondActivity extends AppCompatActivity {
 
                 if (item.getItemId() == R.id.nav_booking) {
                     // Navigate to the GalleryActivity
-                    Intent intent = new Intent(SecondActivity.this, SecondActivity.class); // Change to your gallery activity class
+                    Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
                     startActivity(intent);
                 }
 
                 if (item.getItemId() == R.id.nav_faq) {
                     // Navigate to the GalleryActivity
-                    Intent intent = new Intent(SecondActivity.this, FAQ.class); // Change to your gallery activity class
+                    Intent intent = new Intent(SecondActivity.this, FAQ.class);
                     startActivity(intent);
                 }
 
@@ -107,7 +107,6 @@ public class SecondActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-// Handle logout item selection
                 if (item.getItemId() == R.id.nav_logout) {
                     auth.signOut(); // Sign out from Firebase
                     Intent intent = new Intent(SecondActivity.this, login.class); // Change to your login activity class
@@ -115,7 +114,6 @@ public class SecondActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish(); // Close the SecondActivity
                 }
-
 
                 // Close the drawer after selection
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -148,20 +146,14 @@ public class SecondActivity extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        etDateOfBooking.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
-                    }
-                },
+                (view, year1, month1, dayOfMonth) -> etDateOfBooking.setText(dayOfMonth + "/" + (month1 + 1) + "/" + year1),
                 year, month, day);
 
-        // Set the minimum date to the current date
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
         datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
 
         datePickerDialog.show();
     }
-
 
     private void submitBooking() {
         String nameSurname = etNameSurname.getText().toString().trim();
@@ -171,11 +163,31 @@ public class SecondActivity extends AppCompatActivity {
         String dateOfBooking = etDateOfBooking.getText().toString().trim();
         String request = etRequest.getText().toString().trim();
 
-        if (nameSurname.isEmpty() || phoneNumber.isEmpty()|| emailAddress.isEmpty()|| numberOfGuests.isEmpty() || dateOfBooking.isEmpty() || request.isEmpty()) {
+        // Check if fields are empty
+        if (nameSurname.isEmpty() || phoneNumber.isEmpty() || emailAddress.isEmpty() || numberOfGuests.isEmpty() || dateOfBooking.isEmpty() || request.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Validate Name and Surname (alphabetic characters only)
+        if (!nameSurname.matches("^[a-zA-Z\\s]+$")) {
+            Toast.makeText(this, "Name and Surname must contain only letters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validate Email
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
+            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validate Phone Number (digits only, with 10 digits for South African numbers)
+        if (!phoneNumber.matches("^[0-9]{10}$")) {
+            Toast.makeText(this, "Please enter a valid 10-digit phone number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Proceed with Firebase submission
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
@@ -191,9 +203,26 @@ public class SecondActivity extends AppCompatActivity {
             bookingData.put("UserId", userId);
 
             assert bookingId != null;
-            mDatabase.child(bookingId).setValue(bookingData);
-            Toast.makeText(this, "Booking submitted successfully", Toast.LENGTH_SHORT).show();
-            finish(); // Close this activity or navigate elsewhere
+            mDatabase.child(bookingId).setValue(bookingData, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(DatabaseError error, DatabaseReference ref) {
+                    if (error != null) {
+                        Toast.makeText(SecondActivity.this, "Booking failed to submit", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(SecondActivity.this, "Booking submitted successfully", Toast.LENGTH_SHORT).show();
+                        clearFields(); // Clear fields after submission
+                    }
+                }
+            });
         }
+    }
+
+    private void clearFields() {
+        etNameSurname.setText("");
+        etPhoneNumber.setText("");
+        etEmailAddress.setText("");
+        etNumberOfGuests.setText("");
+        etDateOfBooking.setText("");
+        etRequest.setText("");
     }
 }

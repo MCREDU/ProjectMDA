@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "371619273742",
-    "firebase_url": "https://zaza-legacy-wine-default-rtdb.firebaseio.com",
-    "project_id": "zaza-legacy-wine",
-    "storage_bucket": "zaza-legacy-wine.appspot.com"
+    "project_number": "1042217000574",
+    "firebase_url": "https://zzt1-67b8b-default-rtdb.firebaseio.com",
+    "project_id": "zzt1-67b8b",
+    "storage_bucket": "zzt1-67b8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:371619273742:android:9381781c5199df3c4f705f",
+        "mobilesdk_app_id": "1:1042217000574:android:8dde872875c1f7f75c822f",
         "android_client_info": {
           "package_name": "com.example.zzt1"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCBXIvtodvX9kEIF3j36CCjWCWoQcMIoTs"
+          "current_key": "AIzaSyAb0mWrwf56iswyBTIJ5qYMAVE6w2pPMYM"
         }
       ],
       "services": {

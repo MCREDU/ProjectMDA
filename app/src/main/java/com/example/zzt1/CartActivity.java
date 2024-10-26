@@ -1,8 +1,8 @@
 package com.example.zzt1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,16 +10,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;  // Picasso import
+import com.squareup.picasso.Picasso;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONException;
+import org.json.JSONObject;
+import android.util.Log;
 
 import java.util.List;
+import java.util.Locale;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -28,122 +35,110 @@ public class CartActivity extends AppCompatActivity {
     Button checkoutButton;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    ImageView menuButton;  // Add ImageView for the menu button
+    ImageView menuButton;
     FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_cart);  // Ensure this matches your layout XML
+        setContentView(R.layout.nav_cart);
 
         // Initialize UI elements
-        cartItemsLayout = findViewById(R.id.cart_items_layout); // Update IDs based on your layout
+        cartItemsLayout = findViewById(R.id.cart_items_layout);
         totalPriceView = findViewById(R.id.total_price);
         checkoutButton = findViewById(R.id.checkout_button);
-        drawerLayout = findViewById(R.id.drawer_layout); // Initialize drawer layout
-        navigationView = findViewById(R.id.nav_view); // Initialize navigation view
-        menuButton = findViewById(R.id.menu_button); // Initialize the menu button
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        menuButton = findViewById(R.id.menu_button);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
 
-        displayCartItems(ProductDetailActivity.cart); // Fetch data from the cart list
-        calculateTotal(ProductDetailActivity.cart); // Calculate total price
+        displayCartItems(ProductDetailActivity.cart);
+        calculateTotal(ProductDetailActivity.cart);
 
         // Set menu button functionality to open the drawer
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        menuButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // Set navigation item selection listener
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
-                    Toast.makeText(CartActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CartActivity.this, MainActivity.class));
-                }
-                if (item.getItemId() == R.id.nav_booking) {
-                    startActivity(new Intent(CartActivity.this, SecondActivity.class));
-                }
-                if (item.getItemId() == R.id.nav_faq) {
-                    startActivity(new Intent(CartActivity.this, FAQ.class));
-                }
-                if (item.getItemId() == R.id.nav_cart) {
-                    Toast.makeText(CartActivity.this, "You are already in the cart", Toast.LENGTH_SHORT).show();
-                }
-                if (item.getItemId() == R.id.nav_logout) {
-                    auth.signOut();
-                    Intent logoutIntent = new Intent(CartActivity.this, login.class);
-                    logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(logoutIntent);
-                    finish();
-                }
-
-                // Close the drawer after an item is selected
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
+        // Set navigation item selection listener as in original code
+        navigationView.setNavigationItemSelectedListener(item -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            startActivity(getNavigationIntent(item.getItemId()));
+            return true;
         });
 
         // Handle checkout button click
         checkoutButton.setOnClickListener(v -> {
             Toast.makeText(CartActivity.this, "Proceeding to Checkout", Toast.LENGTH_SHORT).show();
-            // Implement checkout logic here
+            initiateCheckout();
         });
+    }
+
+    private Intent getNavigationIntent(int itemId) {
+        if (itemId == R.id.nav_home) {
+            return new Intent(CartActivity.this, MainActivity.class);
+        }
+        if (itemId == R.id.nav_booking) {
+            return new Intent(CartActivity.this, SecondActivity.class);
+        }
+        if (itemId == R.id.nav_faq) {
+            return new Intent(CartActivity.this, FAQ.class);
+        }
+        if (itemId == R.id.nav_cart) {
+            Toast.makeText(CartActivity.this, "You are already in the cart", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (itemId == R.id.nav_logout) {
+            auth.signOut();
+            Intent logoutIntent = new Intent(CartActivity.this, login.class);
+            logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            finish();
+            return logoutIntent;
+        }
+        return null;
     }
 
     // Function to display cart items dynamically
     private void displayCartItems(List<CartItem> cartItems) {
-        cartItemsLayout.removeAllViews(); // Clear previous views
+        cartItemsLayout.removeAllViews();
 
-        // Iterate over cart items and dynamically add them to the layout
         for (CartItem item : cartItems) {
-            View itemView = getLayoutInflater().inflate(R.layout.cart_item_layout, null); // Replace with your cart item layout
+            View itemView = getLayoutInflater().inflate(R.layout.cart_item_layout, null);
 
             TextView productNameView = itemView.findViewById(R.id.cart_item_name);
             TextView productPriceView = itemView.findViewById(R.id.cart_item_price);
             TextView quantityView = itemView.findViewById(R.id.cart_item_quantity);
             Button increaseButton = itemView.findViewById(R.id.cart_item_increase);
             Button decreaseButton = itemView.findViewById(R.id.cart_item_decrease);
-            ImageView productImageView = itemView.findViewById(R.id.cart_item_image); // Get the image view
+            ImageView productImageView = itemView.findViewById(R.id.cart_item_image);
 
-            // Set product information
             productNameView.setText(item.getProductName());
-            productPriceView.setText(String.format("R %.2f", item.getPrice()));
+            productPriceView.setText(String.format(Locale.US, "R %.2f", item.getPrice()));
             quantityView.setText(String.valueOf(item.getQuantity()));
 
-            // Load product image using Picasso (URL should be stored in the CartItem class)
             Picasso.get().load(item.getImage_name())
-                    .placeholder(R.drawable.barrelbackground) // Ensure you have placeholder_image in res/drawable
-                    .error(R.drawable.logo) // Ensure you have error_image in res/drawable
+                    .placeholder(R.drawable.wine)
+                    .error(R.drawable.wine)
                     .into(productImageView);
 
-            // Increase quantity
             increaseButton.setOnClickListener(v -> {
                 item.setQuantity(item.getQuantity() + 1);
                 quantityView.setText(String.valueOf(item.getQuantity()));
-                calculateTotal(cartItems); // Recalculate total
+                calculateTotal(cartItems);
             });
 
-            // Decrease quantity
             decreaseButton.setOnClickListener(v -> {
                 if (item.getQuantity() > 1) {
                     item.setQuantity(item.getQuantity() - 1);
                     quantityView.setText(String.valueOf(item.getQuantity()));
                 } else {
-                    // If quantity reaches 0, remove the item from the cart
-                    ProductDetailActivity.cart.remove(item);  // Remove item from the static cart list
-                    cartItemsLayout.removeView(itemView);     // Remove the view from the layout
+                    ProductDetailActivity.cart.remove(item);
+                    cartItemsLayout.removeView(itemView);
                     Toast.makeText(CartActivity.this, item.getProductName() + " removed from cart", Toast.LENGTH_SHORT).show();
                 }
-                calculateTotal(cartItems); // Recalculate total
+                calculateTotal(cartItems);
             });
 
-            // Add the dynamically created view to the cart layout
             cartItemsLayout.addView(itemView);
         }
     }
@@ -151,13 +146,79 @@ public class CartActivity extends AppCompatActivity {
     // Function to calculate total price
     private void calculateTotal(List<CartItem> cartItems) {
         double total = 0;
-
-        // Calculate the sum of prices for all items
         for (CartItem item : cartItems) {
             total += item.getPrice() * item.getQuantity();
         }
+        totalPriceView.setText(String.format(Locale.US, "Total: R %.2f", total));
+    }
 
-        // Update total price view
-        totalPriceView.setText(String.format("Total: R %.2f", total));
+    // Function to initiate checkout
+    // Function to initiate checkout
+    private void initiateCheckout() {
+        // Replace this with your actual backend URL
+        String backendUrl = "https://zzt1-67b8b.uc.r.appspot.com/create-checkout"; // Update with your actual backend URL
+        int amount = calculateCartTotal(); // Calculate the total amount from the cart in cents
+        String currency = "ZAR"; // Set currency (ZAR for South African Rand)
+
+        // Create JSON object for the checkout request
+        JSONObject checkoutDetails = new JSONObject();
+        try {
+            checkoutDetails.put("amount", amount); // Already in cents
+            checkoutDetails.put("currency", currency);
+        } catch (JSONException e) {
+            Log.e("CartActivity", "Error creating JSON object", e);
+            Toast.makeText(this, "Error preparing payment request", Toast.LENGTH_SHORT).show();
+            return; // Exit if there’s an error creating the JSON object
+        }
+
+        // Create a request queue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Create the JSON Object Request for the Yoco API
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, backendUrl, checkoutDetails,
+                response -> {
+                    try {
+                        // Log the entire response for debugging
+                        Log.d("CartActivity", "Checkout response: " + response.toString());
+
+                        // Get the message from the response
+                        String message = response.optString("message", "No message provided");
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show(); // Display the message
+
+                        // Start the checkout process by opening the URL in a browser
+                        String redirectUrl = response.optString("redirectUrl", "");
+                        if (!redirectUrl.isEmpty()) {
+                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(redirectUrl)));
+                        } else {
+                            Log.e("CartActivity", "Redirect URL is missing in the response");
+                            Toast.makeText(this, "Payment redirection URL is missing", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e) {
+                        Log.e("CartActivity", "Error parsing JSON response", e);
+                        Toast.makeText(this, "Error processing payment response", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    // Log the entire error for debugging
+                    Log.e("CartActivity", "Error during request: " + error.toString());
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                        Log.e("CartActivity", "Error response: " + new String(error.networkResponse.data));
+                    }
+                    Toast.makeText(this, "Checkout request failed", Toast.LENGTH_SHORT).show();
+                });
+
+        // Add the request to the queue
+        queue.add(jsonObjectRequest);
+    }
+
+
+    private int calculateCartTotal() {
+        double total = 0;
+        for (CartItem item : ProductDetailActivity.cart) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        int amountInCents = (int) Math.round(total * 100);  // Convert to cents
+        Log.d("CartActivity", "Total amount in cents: " + amountInCents);
+        return amountInCents;
     }
 }

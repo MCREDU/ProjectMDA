@@ -58,7 +58,7 @@
             android:id="@+id/cart_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yourgi Cart"
+            android:text="Your Cart"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/winred"

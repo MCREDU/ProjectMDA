@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (item.getItemId() == R.id.nav_logout) {
-                    auth.signOut();
-                    Intent intent = new Intent(MainActivity.this, login.class);
+                    auth.signOut(); // Sign out the user
+                    Intent intent = new Intent(MainActivity.this, Signup.class); // Navigate to Signup
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize RecyclerView
         productList = new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 items in a row
-        productAdapter = new ProductAdapter(this, productList);  // Correct initialization
-        recyclerView.setAdapter(productAdapter);  // Set the correct adapter
+        productAdapter = new ProductAdapter(this, productList); // Correct initialization
+        recyclerView.setAdapter(productAdapter); // Set the correct adapter
 
         // Fetch products from Firestore
         fetchProducts();
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchProducts() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("products")  // Correct collection name as per your Firestore structure
+        db.collection("products") // Correct collection name as per your Firestore structure
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                         if (result != null && !result.isEmpty()) {
                             for (QueryDocumentSnapshot document : result) {
                                 Product product = document.toObject(Product.class);
-                                productList.add(product);  // Add each product to the list
+                                productList.add(product); // Add each product to the list
                             }
-                            productAdapter.notifyDataSetChanged();  // Refresh RecyclerView with new data
+                            productAdapter.notifyDataSetChanged(); // Refresh RecyclerView with new data
                         } else {
                             Toast.makeText(this, "No products found in the database.", Toast.LENGTH_SHORT).show();
                         }
@@ -132,5 +132,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(this, "Error getting products: " + errorMessage, Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Close the app when back is pressed
+        super.onBackPressed();
+        finishAffinity(); // This will close the app
     }
 }

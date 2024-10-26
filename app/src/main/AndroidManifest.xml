@@ -16,15 +16,20 @@
         android:theme="@style/Theme.ZZT1"
         tools:targetApi="31">
 
-        <!-- Signup Activity -->
+        <!-- Splash Activity -->
         <activity
-            android:name=".Signup"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Signup Activity -->
+        <activity
+            android:name=".Signup"
+            android:exported="true" />
 
         <!-- Login Activity -->
         <activity
@@ -66,12 +71,22 @@
         <!-- Cart Activity -->
         <activity
             android:name=".CartActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <!-- Deep linking intent filter for handling Yoco payment redirection -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Custom URL scheme and host for deep linking -->
+                <data android:scheme="yourapp" android:host="paymentresult" />
+            </intent-filter>
+        </activity>
 
         <!-- Meta-data for Internet permission -->
         <meta-data
             android:name="android.permission.INTERNET"
             android:value="true" />
     </application>
-
 </manifest>
