@@ -10,9 +10,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.zzt1" />
-                  <option name="mobileSdkAppId" value="1:371619273742:android:9381781c5199df3c4f705f" />
-                  <option name="projectId" value="zaza-legacy-wine" />
-                  <option name="projectNumber" value="371619273742" />
+                  <option name="mobileSdkAppId" value="1:1042217000574:android:8dde872875c1f7f75c822f" />
+                  <option name="projectId" value="zzt1-67b8b" />
+                  <option name="projectNumber" value="1042217000574" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
