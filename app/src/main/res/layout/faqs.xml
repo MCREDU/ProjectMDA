@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:background="@color/white">
 
-    <!-- Toolbar with Zaza Legacy Wines Logo and Title -->
+    <!-- Fixed Toolbar with Zaza Legacy Wines Logo and Title -->
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="183dp"
@@ -46,7 +46,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Event Booking Query Section -->
+    <!-- "Frequently Asked Questions" section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,169 +58,167 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp" />
 
-    <!-- Name & Surname Input Field -->
-
-    <!-- FAQ: Name and Surname Button -->
-    <Button
-        android:id="@+id/btnDeliveriesFAQ"
+    <!-- Scrollable Content Section -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Deliveries"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <!-- Expandable View for Name and Surname Answer -->
-    <TextView
-        android:id="@+id/tvDeliveryAnswer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="PLace"
-        android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <!-- FAQ: Phone Number Button -->
-    <Button
-        android:id="@+id/btnAddictionHelpFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Addiction Helpline"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <!-- FAQ Buttons and Expandable Answers -->
 
-    <!-- Expandable View for Phone Number Answer -->
-    <TextView
-        android:id="@+id/tvAddictionHelp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="We reccomend receiving aid from Alcoholics Anonoymous(AA)"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnDeliveriesFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Deliveries"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <!-- FAQ: Email Address Button -->
-    <Button
-        android:id="@+id/btnReturnFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Return Policy"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tvDeliveryAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Place"
+                android:visibility="gone" />
 
-    <!-- Expandable View for Email Address Answer -->
-    <TextView
-        android:id="@+id/tvReturn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="Here is the answer forReturn policy FAQ"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnAddictionHelpFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Addiction Helpline"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <!-- FAQ: Number of Guests Button -->
-    <Button
-        android:id="@+id/btnOrderOutOfStockFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Order Out of stock"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tvAddictionHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="We recommend receiving aid from Alcoholics Anonymous (AA)"
+                android:visibility="gone" />
 
-    <!-- Expandable View for Number of Guests Answer -->
-    <TextView
-        android:id="@+id/tvOrderOutOfStock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="Here is the answer for Number of Guests FAQ"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnReturnFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Return Policy"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <!-- FAQ: Date of Booking Button -->
-    <Button
-        android:id="@+id/btnPaymentMethodFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Payment Methods"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tvReturn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Here is the answer for Return policy FAQ"
+                android:visibility="gone" />
 
-    <!-- Expandable View for Date of Booking Answer -->
-    <TextView
-        android:id="@+id/tvPaymentMethod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="Here is the answer for Date of Booking FAQ"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnOrderOutOfStockFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Order Out of stock"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <!-- FAQ: Special Requests Button -->
-    <Button
-        android:id="@+id/btnLegalAgeFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Legal Drinking Age To Purchase"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tvOrderOutOfStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Here is the answer for Order Out of Stock FAQ"
+                android:visibility="gone" />
 
-    <!-- Expandable View for Special Requests Answer -->
-    <TextView
-        android:id="@+id/tvLegalAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="Here is the answer for Special Requests FAQ"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnPaymentMethodFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Payment Methods"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/btnCancelFAQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:text="Cancellation"
-        android:padding="12dp"
-        android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tvPaymentMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Here is the answer for Payment Methods FAQ"
+                android:visibility="gone" />
 
-    <!-- Expandable View for Special Requests Answer -->
-    <TextView
-        android:id="@+id/tvCancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:padding="12dp"
-        android:textColor="@android:color/white"
-        android:text="Here is the answer for Special Requests FAQ"
-        android:visibility="gone" />
+            <Button
+                android:id="@+id/btnLegalAgeFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Legal Drinking Age To Purchase"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
 
-    <!-- Submit Button -->
+            <TextView
+                android:id="@+id/tvLegalAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Here is the answer for Legal Drinking Age FAQ"
+                android:visibility="gone" />
 
+            <Button
+                android:id="@+id/btnCancelFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:text="Cancellation"
+                android:padding="12dp"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tvCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_background"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:text="Here is the answer for Cancellation FAQ"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
