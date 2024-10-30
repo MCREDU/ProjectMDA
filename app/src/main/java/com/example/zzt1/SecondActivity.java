@@ -3,14 +3,12 @@ package com.example.zzt1;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -29,9 +27,7 @@ import java.util.Map;
 public class SecondActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private View menuButton;
     private EditText etNameSurname, etPhoneNumber, etEmailAddress, etNumberOfGuests, etDateOfBooking, etRequest;
-    private Button btnSubmitBooking;
     FirebaseAuth auth;
     private DatabaseReference mDatabase;
 
@@ -47,7 +43,7 @@ public class SecondActivity extends AppCompatActivity {
 
         // Initialize DrawerLayout and NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
-        menuButton = findViewById(R.id.menu_button);
+        View menuButton = findViewById(R.id.menu_button);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         // Set up Firebase
@@ -61,7 +57,7 @@ public class SecondActivity extends AppCompatActivity {
         etNumberOfGuests = findViewById(R.id.etNumberOfGuests);
         etDateOfBooking = findViewById(R.id.etDateOfBooking);
         etRequest = findViewById(R.id.etRequest);
-        btnSubmitBooking = findViewById(R.id.btnSubmitBooking);
+        Button btnSubmitBooking = findViewById(R.id.btnSubmitBooking);
 
         // Check if user is logged in
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -71,71 +67,53 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         // Menu button to open navigation drawer
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        menuButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
         // Navigation item selection
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Handle navigation item selection
-                if (item.getItemId() == R.id.nav_home) {
-                    Toast.makeText(SecondActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SecondActivity.this, MainActivity.class); // Navigate to MainActivity
-                    startActivity(intent);
-                    finish(); // Close the current activity to avoid stacking
-                }
-
-                if (item.getItemId() == R.id.nav_booking) {
-                    // Navigate to the GalleryActivity
-                    Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_faq) {
-                    // Navigate to the GalleryActivity
-                    Intent intent = new Intent(SecondActivity.this, FAQ.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_cart) {
-                    Intent intent = new Intent(SecondActivity.this, CartActivity.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_logout) {
-                    auth.signOut(); // Sign out from Firebase
-                    Intent intent = new Intent(SecondActivity.this, login.class); // Change to your login activity class
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish(); // Close the SecondActivity
-                }
-
-                // Close the drawer after selection
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            // Handle navigation item selection
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(SecondActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SecondActivity.this, MainActivity.class); // Navigate to MainActivity
+                startActivity(intent);
+                finish(); // Close the current activity to avoid stacking
             }
+
+            if (item.getItemId() == R.id.nav_booking) {
+                // Navigate to the GalleryActivity
+                Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_faq) {
+                // Navigate to the GalleryActivity
+                Intent intent = new Intent(SecondActivity.this, FAQ.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_cart) {
+                Intent intent = new Intent(SecondActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_logout) {
+                auth.signOut(); // Sign out from Firebase
+                Intent intent = new Intent(SecondActivity.this, login.class); // Change to your login activity class
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // Close the SecondActivity
+            }
+
+            // Close the drawer after selection
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
         // Date picker for booking date
-        etDateOfBooking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePicker();
-            }
-        });
+        etDateOfBooking.setOnClickListener(view -> showDatePicker());
 
         // Submit booking button
-        btnSubmitBooking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitBooking();
-            }
-        });
+        btnSubmitBooking.setOnClickListener(view -> submitBooking());
     }
 
     private void showDatePicker() {
@@ -203,15 +181,12 @@ public class SecondActivity extends AppCompatActivity {
             bookingData.put("UserId", userId);
 
             assert bookingId != null;
-            mDatabase.child(bookingId).setValue(bookingData, new DatabaseReference.CompletionListener() {
-                @Override
-                public void onComplete(DatabaseError error, DatabaseReference ref) {
-                    if (error != null) {
-                        Toast.makeText(SecondActivity.this, "Booking failed to submit", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SecondActivity.this, "Booking submitted successfully", Toast.LENGTH_SHORT).show();
-                        clearFields(); // Clear fields after submission
-                    }
+            mDatabase.child(bookingId).setValue(bookingData, (error, ref) -> {
+                if (error != null) {
+                    Toast.makeText(SecondActivity.this, "Booking failed to submit", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SecondActivity.this, "Booking submitted successfully", Toast.LENGTH_SHORT).show();
+                    clearFields(); // Clear fields after submission
                 }
             });
         }

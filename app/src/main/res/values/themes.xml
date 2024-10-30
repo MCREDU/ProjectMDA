@@ -15,9 +15,8 @@
     </style>
 
     <style name="AppToolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@drawable/frontbackground1</item>
 
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">#FF000000</item>
         <!-- Add other common toolbar attributes here -->
     </style>
 

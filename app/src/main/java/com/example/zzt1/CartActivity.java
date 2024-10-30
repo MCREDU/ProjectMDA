@@ -182,7 +182,7 @@ public class CartActivity extends AppCompatActivity {
                         Log.d("CartActivity", "Checkout response: " + response.toString());
 
                         // Get the message from the response
-                        String message = response.optString("message", "No message provided");
+                        String message = response.optString("message", "Proceeding To Payment");
                         Toast.makeText(this, message, Toast.LENGTH_LONG).show(); // Display the message
 
                         // Start the checkout process by opening the URL in a browser

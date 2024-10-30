@@ -14,8 +14,6 @@ import java.util.Objects;
 public class Signup extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText signupEmail, signupPassword;
-    private Button signupButton;
-    private TextView loginRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +23,8 @@ public class Signup extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
-        signupButton = findViewById(R.id.signup_button);
-        loginRedirectText = findViewById(R.id.loginRedirectText);
+        Button signupButton = findViewById(R.id.signup_button);
+        TextView loginRedirectText = findViewById(R.id.loginRedirectText);
 
         signupButton.setOnClickListener(view -> {
             String user = signupEmail.getText().toString().trim();

@@ -9,85 +9,86 @@
     tools:context=".login">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="261dp"
+            android:layout_height="241dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:contentDescription="App Logo"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="36sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/red_border"
+            android:drawableLeft="@drawable/baseline_email_24"
+            android:drawablePadding="8dp"
+            android:hint="Email"
+            android:padding="8dp"/>
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/red_border"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="8dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:text="Login"
+            android:textSize="18sp"
+            android:backgroundTint="@color/winred"
+            app:cornerRadius="30dp" />
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:padding="8dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:background="@color/white"/>
+
+        <com.developer.gbuttons.GoogleSignInButton
+            android:id="@+id/googleBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="261dp"
-                android:layout_height="241dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:contentDescription="App Logo"
-                android:src="@drawable/logo" />
-
-            <TextView
-                android:id="@+id/loginText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textSize="36sp"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp" />
-
-            <EditText
-                android:id="@+id/login_email"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/red_border"
-                android:drawableLeft="@drawable/baseline_email_24"
-                android:drawablePadding="8dp"
-                android:hint="Email"
-                android:padding="8dp"/>
-
-            <EditText
-                android:id="@+id/login_password"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/red_border"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                android:drawablePadding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:padding="8dp" />
-
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="30dp"
-                android:text="Login"
-                android:textSize="18sp"
-                android:backgroundTint="@color/winred"
-                app:cornerRadius="30dp" />
-
-            <TextView
-                android:id="@+id/forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:padding="8dp"
-                android:text="Forgot Password?"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            <com.developer.gbuttons.GoogleSignInButton
-                android:id="@+id/googleBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sign in with Google"
-                app:isDarkTheme="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"/>
+            android:text="Sign in with Google"
+            app:isDarkTheme="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"/>
 
         <TextView
             android:id="@+id/signUpRedirectText"
@@ -98,7 +99,7 @@
             android:padding="1dp"
             android:text="Not yet registered? Sign Up"
             android:textAlignment="center"
-            android:textColor="@color/winred"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:background="@color/white"/>
 

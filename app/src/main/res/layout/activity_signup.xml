@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,20 +25,21 @@
                 android:layout_height="241dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
-                android:contentDescription="App Logo"
-                android:src="@drawable/logo" />
+                android:contentDescription="@string/app_logo"
+                android:src="@drawable/logo"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/signupText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
-                android:textSize="36sp"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:text="@string/sign_up"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/signup_email"
@@ -47,9 +49,10 @@
                 android:background="@drawable/red_border"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="8dp"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:padding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                tools:ignore="Autofill,TextFields" />
 
             <EditText
                 android:id="@+id/signup_password"
@@ -59,7 +62,7 @@
                 android:background="@drawable/red_border"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black" />
@@ -69,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 android:textSize="18sp"
                 android:backgroundTint="@color/winred"
                 app:cornerRadius="30dp" />
@@ -81,7 +84,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:text="Already a user? Login now"
+                android:text="@string/already_a_user_login_now"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:background="@color/white"/>

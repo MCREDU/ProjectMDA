@@ -2,14 +2,10 @@ package com.example.zzt1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -29,7 +25,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     TextView userName;
     ImageView menuButton;
-    Button logoutButton;
     FirebaseAuth auth;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -60,45 +55,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Set menu button functionality to open the drawer
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        menuButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
         // Set navigation item selection listener
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
-                    Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
-                }
-
-                if (item.getItemId() == R.id.nav_booking) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    startActivity(intent);
-                }
-                if (item.getItemId() == R.id.nav_faq) {
-                    Intent intent = new Intent(MainActivity.this, FAQ.class);
-                    startActivity(intent);
-                }
-                if (item.getItemId() == R.id.nav_cart) {
-                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_logout) {
-                    auth.signOut(); // Sign out the user
-                    Intent intent = new Intent(MainActivity.this, Signup.class); // Navigate to Signup
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_SHORT).show();
             }
+
+            if (item.getItemId() == R.id.nav_booking) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_faq) {
+                Intent intent = new Intent(MainActivity.this, FAQ.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_cart) {
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_logout) {
+                auth.signOut(); // Sign out the user
+                Intent intent = new Intent(MainActivity.this, Signup.class); // Navigate to Signup
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
         // Initialize RecyclerView

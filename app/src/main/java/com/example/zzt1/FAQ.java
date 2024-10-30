@@ -2,7 +2,6 @@ package com.example.zzt1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,11 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class FAQ extends AppCompatActivity {
 
-    private Button btnDeliveriesFAQ, btnAddictionHelpFAQ, btnReturnFAQ,
-            btnOrderOutOfStockFAQ, btnPaymentMethodFAQ,
-            btnLegalAgeFAQ, btnCancelFAQ;
-    private View menuButton;
-    Button logoutButton;
+
     private TextView tvDeliveryAnswer, tvAddictionHelp, tvReturn,
             tvOrderOutOfStock, tvPaymentMethod,
             tvLegalAge, tvCancel;
@@ -52,7 +46,7 @@ public class FAQ extends AppCompatActivity {
 
         // Initialize DrawerLayout and NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
-        menuButton = findViewById(R.id.menu_button);
+        View menuButton = findViewById(R.id.menu_button);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
 
@@ -65,21 +59,16 @@ public class FAQ extends AppCompatActivity {
         }
 
         // Menu button to open navigation drawer
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        menuButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
         // Initialize buttons and text views
-        btnDeliveriesFAQ = findViewById(R.id.btnDeliveriesFAQ);
-        btnAddictionHelpFAQ = findViewById(R.id.btnAddictionHelpFAQ);
-        btnReturnFAQ = findViewById(R.id.btnReturnFAQ);
-        btnOrderOutOfStockFAQ = findViewById(R.id.btnOrderOutOfStockFAQ);
-        btnPaymentMethodFAQ = findViewById(R.id.btnPaymentMethodFAQ);
-        btnLegalAgeFAQ = findViewById(R.id.btnLegalAgeFAQ);
-        btnCancelFAQ = findViewById(R.id.btnCancelFAQ);
+        Button btnDeliveriesFAQ = findViewById(R.id.btnDeliveriesFAQ);
+        Button btnAddictionHelpFAQ = findViewById(R.id.btnAddictionHelpFAQ);
+        Button btnReturnFAQ = findViewById(R.id.btnReturnFAQ);
+        Button btnOrderOutOfStockFAQ = findViewById(R.id.btnOrderOutOfStockFAQ);
+        Button btnPaymentMethodFAQ = findViewById(R.id.btnPaymentMethodFAQ);
+        Button btnLegalAgeFAQ = findViewById(R.id.btnLegalAgeFAQ);
+        Button btnCancelFAQ = findViewById(R.id.btnCancelFAQ);
 
         tvDeliveryAnswer = findViewById(R.id.tvDeliveryAnswer);
         tvAddictionHelp = findViewById(R.id.tvAddictionHelp);
@@ -100,41 +89,38 @@ public class FAQ extends AppCompatActivity {
 
 
         // Set navigation item selection listener
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.nav_home) {
-                    Toast.makeText(FAQ.this, "Home selected", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(FAQ.this, MainActivity.class); // Navigate to MainActivity
-                    startActivity(intent);
-                    finish(); // Close the current activity to avoid stacking
-                }
-
-                if (item.getItemId() == R.id.nav_booking) {
-                    Intent intent = new Intent(FAQ.this, SecondActivity.class);
-                    startActivity(intent);
-                }
-                if (item.getItemId() == R.id.nav_faq) {
-                    Intent intent = new Intent(FAQ.this, FAQ.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_cart) {
-                    Intent intent = new Intent(FAQ.this, CartActivity.class);
-                    startActivity(intent);
-                }
-
-                if (item.getItemId() == R.id.nav_logout) {
-                    auth.signOut();
-                    Intent intent = new Intent(FAQ.this, login.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-                // Close the drawer after selection
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                Toast.makeText(FAQ.this, "Home selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FAQ.this, MainActivity.class); // Navigate to MainActivity
+                startActivity(intent);
+                finish(); // Close the current activity to avoid stacking
             }
+
+            if (item.getItemId() == R.id.nav_booking) {
+                Intent intent = new Intent(FAQ.this, SecondActivity.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_faq) {
+                Intent intent = new Intent(FAQ.this, FAQ.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_cart) {
+                Intent intent = new Intent(FAQ.this, CartActivity.class);
+                startActivity(intent);
+            }
+
+            if (item.getItemId() == R.id.nav_logout) {
+                auth.signOut();
+                Intent intent = new Intent(FAQ.this, login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+            // Close the drawer after selection
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
     }

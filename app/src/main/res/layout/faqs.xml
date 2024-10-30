@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +11,7 @@
     <!-- Fixed Toolbar with Zaza Legacy Wines Logo and Title -->
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="183dp"
+        android:layout_height="225dp"
         android:fitsSystemWindows="true"
         android:background="@drawable/header_3">
 
@@ -23,7 +24,7 @@
                 android:layout_width="148dp"
                 android:layout_height="155dp"
                 android:layout_marginStart="120dp"
-                android:contentDescription="Zaza Legacy Wines Logo"
+                android:contentDescription="@string/zaza_legacy_wines_logo"
                 android:scaleType="fitCenter"
                 android:src="@drawable/logo"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -36,13 +37,14 @@
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
                 android:layout_marginEnd="328dp"
-                android:contentDescription="Menu Button"
+                android:contentDescription="@string/menu_button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.496" />
+                app:layout_constraintVertical_bias="0.496"
+                tools:ignore="RedundantDescriptionCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -50,7 +52,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Frequently Asked Questions"
+        android:text="@string/frequently_asked_questions"
         android:textColor="@color/winred"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -77,9 +79,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Deliveries"
+                android:text="@string/deliveries"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvDeliveryAnswer"
@@ -89,7 +92,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Place"
+                android:text="@string/at_this_time_our_company_does_not_offer_delivery_services_all_orders_are_available_for_collection_only_once_your_order_is_ready_you_will_receive_a_notification_with_pickup_instructions_including_the_location_and_available_collection_times"
                 android:visibility="gone" />
 
             <Button
@@ -98,9 +101,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Addiction Helpline"
+                android:text="@string/addiction_helpline"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvAddictionHelp"
@@ -110,7 +114,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="We recommend receiving aid from Alcoholics Anonymous (AA)"
+                android:text="@string/we_recommend_receiving_aid_from_alcoholics_anonymous_aa_0800_12_13_14_if_you_or_someone_you_know_is_struggling_with_addiction_please_consider_reaching_out_for_support_these_services_are_usually_available_24_7_and_offer_confidential_support"
                 android:visibility="gone" />
 
             <Button
@@ -119,9 +123,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Return Policy"
+                android:text="@string/return_policy"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvReturn"
@@ -131,7 +136,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Here is the answer for Return policy FAQ"
+                android:text="@string/we_accept_returns_for_items_in_their_original_unopened_condition_within_14_days_of_collection_please_bring_your_proof_of_purchase_to_the_collection_point_to_facilitate_the_return_refunds_will_be_issued_to_the_original_payment_method_or_as_store_credit"
                 android:visibility="gone" />
 
             <Button
@@ -140,9 +145,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Order Out of stock"
+                android:text="@string/order_out_of_stock"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvOrderOutOfStock"
@@ -152,7 +158,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Here is the answer for Order Out of Stock FAQ"
+                android:text="@string/if_an_item_is_out_of_stock_you_may_have_the_option_to_sign_up_for_notifications_when_it_becomes_available_again_alternatively_feel_free_to_ask_our_team_about_possible_alternatives_or_restocking_timelines"
                 android:visibility="gone" />
 
             <Button
@@ -161,9 +167,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Payment Methods"
+                android:text="@string/payment_methods"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvPaymentMethod"
@@ -173,7 +180,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Here is the answer for Payment Methods FAQ"
+                android:text="@string/we_accept_a_variety_of_payment_methods_including_major_credit_and_debit_cards_and_mobile_payments_payment_can_be_completed_online_when_placing_your_order_or_at_the_collection_point_if_pre_arranged"
                 android:visibility="gone" />
 
             <Button
@@ -182,9 +189,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Legal Drinking Age To Purchase"
+                android:text="@string/legal_drinking_age_to_purchase"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvLegalAge"
@@ -194,7 +202,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Here is the answer for Legal Drinking Age FAQ"
+                android:text="@string/please_note_that_you_must_be_of_legal_drinking_age_to_purchase_certain_products_proof_of_age_may_be_required_at_the_collection_point_so_please_bring_a_valid_id_with_you_to_confirm_your_eligibility"
                 android:visibility="gone" />
 
             <Button
@@ -203,9 +211,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_background"
-                android:text="Cancellation"
+                android:text="@string/cancellation"
                 android:padding="12dp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="VisualLintButtonSize" />
 
             <TextView
                 android:id="@+id/tvCancel"
@@ -215,7 +224,7 @@
                 android:background="@drawable/rounded_background"
                 android:padding="12dp"
                 android:textColor="@android:color/white"
-                android:text="Here is the answer for Cancellation FAQ"
+                android:text="@string/orders_can_be_canceled_within_a_specified_timeframe_before_collection_if_you_need_to_cancel_please_contact_our_customer_service_as_soon_as_possible_at_info_bantukraal_com_if_your_order_is_already_prepared_you_may_need_to_follow_the_return_process_after_collecting_the_item"
                 android:visibility="gone" />
 
         </LinearLayout>
