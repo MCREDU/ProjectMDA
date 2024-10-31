@@ -67,6 +67,13 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
+            <CheckBox
+                android:id="@+id/show_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Password"
+                android:textColor="@color/white" />
+
             <Button
                 android:id="@+id/signup_button"
                 android:layout_width="match_parent"

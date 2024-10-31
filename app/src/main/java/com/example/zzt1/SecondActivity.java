@@ -16,7 +16,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -147,7 +146,7 @@ public class SecondActivity extends AppCompatActivity {
             return;
         }
 
-        // Validate Name and Surname (alphabetic characters only)
+        // Validate Name and Surname (only alphabetic characters and spaces)
         if (!nameSurname.matches("^[a-zA-Z\\s]+$")) {
             Toast.makeText(this, "Name and Surname must contain only letters", Toast.LENGTH_SHORT).show();
             return;
@@ -159,9 +158,21 @@ public class SecondActivity extends AppCompatActivity {
             return;
         }
 
-        // Validate Phone Number (digits only, with 10 digits for South African numbers)
+        // Validate Phone Number (digits only, 10 digits for South African numbers)
         if (!phoneNumber.matches("^[0-9]{10}$")) {
             Toast.makeText(this, "Please enter a valid 10-digit phone number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validate Number of Guests (digits only)
+        if (!numberOfGuests.matches("^[0-9]+$")) {
+            Toast.makeText(this, "Please enter a valid number of guests", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Enhanced Request validation to reject HTML-like tags
+        if (!request.matches("^[a-zA-Z0-9\\s.]+$") || request.matches(".*<\\s*script.*>.*|.*[<>&\"'].*")) {
+            Toast.makeText(this, "Request must contain only letters, numbers, spaces, and full stops, without HTML tags", Toast.LENGTH_SHORT).show();
             return;
         }
 
