@@ -37,7 +37,7 @@
                 android:id="@+id/menu_button"
                 android:layout_width="@dimen/toolbar_icon_size"
                 android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_marginEnd="312dp"
+                android:layout_marginEnd="328dp"
                 android:contentDescription="@string/menu_button"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_view_headline_24"

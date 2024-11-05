@@ -1,15 +1,15 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/white" /> <!-- Button color when pressed -->
-            <corners android:radius="12dp" /> <!-- Rounded corners with 12dp radius -->
+            <solid android:color="@color/white" />
+            <corners android:radius="12dp" />
         </shape>
     </item>
 
     <item>
         <shape>
-            <solid android:color="#B22222" /> <!-- Default button color -->
-            <corners android:radius="12dp" /> <!-- Rounded corners with 12dp radius -->
+            <solid android:color="#B22222" />
+            <corners android:radius="12dp" />
         </shape>
     </item>
 </selector>

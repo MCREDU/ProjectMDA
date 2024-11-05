@@ -10,7 +10,7 @@ public class CartItem {
     public CartItem(String productName, double price, String image_name, int quantity) {
         this.productName = productName;
         this.price = price;
-        this.image_name = image_name; // Initialize imageUrl
+        this.image_name = image_name; // Initializes the imageUrl from the databse
         this.quantity = quantity;
     }
 

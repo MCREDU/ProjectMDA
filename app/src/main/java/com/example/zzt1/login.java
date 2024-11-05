@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class login extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
     private FirebaseAuth auth;
-    private CheckBox showPasswordCheckbox;
     TextView forgotPassword;
     GoogleSignInButton googleBtn;
     GoogleSignInOptions gOptions;
@@ -43,12 +42,12 @@ public class login extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         Button loginButton = findViewById(R.id.login_button);
         TextView signupRedirectText = findViewById(R.id.signUpRedirectText);
-        showPasswordCheckbox = findViewById(R.id.show_password);
+        CheckBox showPasswordCheckbox = findViewById(R.id.show_password);
         forgotPassword = findViewById(R.id.forgot_password);
         googleBtn = findViewById(R.id.googleBtn);
         auth = FirebaseAuth.getInstance();
 
-        // Toggle password visibility
+        // Toggle password visibility based on checkbox state
         showPasswordCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 loginPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -59,7 +58,7 @@ public class login extends AppCompatActivity {
         });
 
         loginButton.setOnClickListener(v -> {
-            // Retrieve and sanitize input immediately
+            // Retrieve and sanitize input immediately after button click
             String email = sanitizeInput(loginEmail.getText().toString().trim());
             String pass = sanitizeInput(loginPassword.getText().toString().trim());
 

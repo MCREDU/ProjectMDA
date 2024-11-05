@@ -44,21 +44,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         // Set the product name and price to the corresponding views
         holder.productName.setText(product.getProduct_name());
-        holder.productPrice.setText("R " + product.getPrice());
+        holder.productPrice.setText("R " + String.format("%.2f", product.getPrice()));
 
         // Change the text colors to your desired color
         holder.productName.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY));
         holder.productPrice.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.YY));
 
-        // Use the AsyncTask to load the image from the URL without Glide
+        // Uses the AsyncTask to load the image from the URL without Glide
         if (product.getImage_name() != null && !product.getImage_name().isEmpty()) {
             new DownloadImageTask(holder.productImage).execute(product.getImage_name());
         } else {
-            // Set a placeholder image if no image URL is provided
             holder.productImage.setImageResource(R.drawable.sweetwine);  // Use a default image in your drawable
         }
 
-        // Handle click on product image to open ProductDetailActivity
+        // Handles click on product image to open ProductDetailActivity
         holder.productImage.setOnClickListener(v -> {
             // Create an intent to open ProductDetailActivity
             Intent intent = new Intent(context, ProductDetailActivity.class);
@@ -118,7 +117,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 bmImage.setImageBitmap(result);
             } else {
                 // Set a default image if the download fails
-                bmImage.setImageResource(R.drawable.sweetwine);  // Use a default image in your drawable folder
+                bmImage.setImageResource(R.drawable.sweetwine);  // Uses a default image in drawable folder
             }
         }
     }

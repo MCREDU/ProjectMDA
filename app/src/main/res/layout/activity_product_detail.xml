@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Toolbar -->
+
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="225dp"
@@ -41,7 +41,7 @@
                     android:id="@+id/menu_button"
                     android:layout_width="@dimen/toolbar_icon_size"
                     android:layout_height="@dimen/toolbar_icon_size"
-                    android:layout_marginEnd="312dp"
+                    android:layout_marginEnd="328dp"
                     android:contentDescription="@string/menu_button"
                     android:scaleType="fitCenter"
                     android:src="@drawable/baseline_view_headline_24"
@@ -100,7 +100,7 @@
                 android:textSize="13sp"
                 tools:ignore="TextSizeCheck" />
 
-            <!-- Add to Cart Button -->
+
             <Button
                 android:id="@+id/add_to_cart_button"
                 android:layout_width="match_parent"

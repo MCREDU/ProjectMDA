@@ -20,5 +20,4 @@
         android:textColor="@color/YY"
         android:textSize="18sp" />
 
-    <!-- Add other views as needed -->
 </LinearLayout>

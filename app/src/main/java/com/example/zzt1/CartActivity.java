@@ -153,9 +153,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     // Function to initiate checkout
-    // Function to initiate checkout
     private void initiateCheckout() {
-        // Replace this with your actual backend URL
+        // backend URL for paygate
         String backendUrl = "https://zzt1-67b8b.uc.r.appspot.com/create-checkout"; // Update with your actual backend URL
         int amount = calculateCartTotal(); // Calculate the total amount from the cart in cents
         String currency = "ZAR"; // Set currency (ZAR for South African Rand)
@@ -171,21 +170,21 @@ public class CartActivity extends AppCompatActivity {
             return; // Exit if there’s an error creating the JSON object
         }
 
-        // Create a request queue
+        // creates a request queue
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        // Create the JSON Object Request for the Yoco API
+        // Creates the JSON Object Request for the Yoco API
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, backendUrl, checkoutDetails,
                 response -> {
                     try {
                         // Log the entire response for debugging
                         Log.d("CartActivity", "Checkout response: " + response.toString());
 
-                        // Get the message from the response
+                        // Gets the message from the response
                         String message = response.optString("message", "Proceeding To Payment");
-                        Toast.makeText(this, message, Toast.LENGTH_LONG).show(); // Display the message
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show(); // Displays the message
 
-                        // Start the checkout process by opening the URL in a browser
+                        // Starts the checkout process by opening the URL in a browser
                         String redirectUrl = response.optString("redirectUrl", "");
                         if (!redirectUrl.isEmpty()) {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(redirectUrl)));
@@ -217,7 +216,7 @@ public class CartActivity extends AppCompatActivity {
         for (CartItem item : ProductDetailActivity.cart) {
             total += item.getPrice() * item.getQuantity();
         }
-        int amountInCents = (int) Math.round(total * 100);  // Convert to cents
+        int amountInCents = (int) Math.round(total * 100);  // Converts the item amount to cents
         Log.d("CartActivity", "Total amount in cents: " + amountInCents);
         return amountInCents;
     }

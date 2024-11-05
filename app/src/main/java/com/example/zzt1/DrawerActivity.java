@@ -28,7 +28,7 @@ public class DrawerActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarDrawer.toolbar);
 
         // Handle the FAB action (if needed)
-        binding.appBarDrawer.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        binding.appBarDrawer.fab.setOnClickListener(view -> Snackbar.make(view, "FAB ACTION", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .setAnchorView(R.id.fab).show());
 
@@ -36,7 +36,7 @@ public class DrawerActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
-        // Menu IDs as top level destinations
+        // Sets up the navigation Menu IDs as top level destinations
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -47,7 +47,7 @@ public class DrawerActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         // Automatically navigate to MainActivity after login or signup
-        navigateToMainActivity();  // <-- Custom method to handle MainActivity navigation
+        navigateToMainActivity();  // <-- This is a Custom method to handle MainActivity navigation
     }
 
     private void navigateToMainActivity() {

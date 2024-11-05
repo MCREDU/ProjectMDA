@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_main);
 
-        // Initialize UI elements
+        // Initialize UI elements and views
         menuButton = findViewById(R.id.menu_button);
         userName = findViewById(R.id.userName);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         recyclerView = findViewById(R.id.recyclerView);
 
-        // Initialize Firebase authentication
+        // Initialize Firebase authentication instance
         auth = FirebaseAuth.getInstance();
 
-        // Get the currently signed-in user
+        // Get the currently signed-in user and display their email
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
             String email = user.getEmail();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize RecyclerView
         productList = new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 items in a row
-        productAdapter = new ProductAdapter(this, productList); // Correct initialization
+        productAdapter = new ProductAdapter(this, productList); // Pass the productList
         recyclerView.setAdapter(productAdapter); // Set the correct adapter
 
         // Fetch products from Firestore
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchProducts() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("products") // Correct collection name as per your Firestore structure
+        db.collection("products") // Correct collection name as per Firestore structure
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         if (result != null && !result.isEmpty()) {
                             for (QueryDocumentSnapshot document : result) {
                                 Product product = document.toObject(Product.class);
-                                productList.add(product); // Add each product to the list
+                                productList.add(product); // Adds each product to the list
                             }
                             productAdapter.notifyDataSetChanged(); // Refresh RecyclerView with new data
                         } else {

@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:background="@color/white">
 
-    <!-- Toolbar with Zaza Legacy Wines Logo and Title -->
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="225dp"
@@ -48,7 +48,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Event Booking Query Section -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,9 +60,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp" />
 
-    <!-- Name & Surname Input Field -->
 
-    <!-- Number of Guests Input Field -->
     <EditText
         android:id="@+id/etNameSurname"
         android:layout_width="match_parent"
@@ -116,7 +114,7 @@
 
 
 
-    <!-- Date of Booking Input Field -->
+
     <EditText
         android:id="@+id/etDateOfBooking"
         android:layout_width="match_parent"
@@ -130,7 +128,7 @@
         android:textColor="@android:color/white"
         tools:ignore="Autofill,VisualLintTextFieldSize" />
 
-    <!-- The Request Input Field -->
+
     <EditText
         android:id="@+id/etRequest"
         android:layout_width="match_parent"
@@ -146,7 +144,7 @@
         android:minLines="3"
         tools:ignore="Autofill,VisualLintTextFieldSize" />
 
-    <!-- Submit Button -->
+
     <Button
         android:id="@+id/btnSubmitBooking"
         android:layout_width="wrap_content"

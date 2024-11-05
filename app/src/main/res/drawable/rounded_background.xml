@@ -1,7 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/winred" /> <!-- Background color for the input fields -->
-    <corners android:radius="12dp" />  <!-- Rounded corners with 12dp radius -->
+    <solid android:color="@color/winred" />
+    <corners android:radius="12dp" />
     <stroke
         android:width="2dp"
-        android:color="#BDBDBD" /> <!-- Border color and width -->
+        android:color="#BDBDBD" /> 
 </shape>

@@ -31,25 +31,24 @@ public class ProductDetailActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
-    public static List<CartItem> cart = new ArrayList<>();  // Store cart items
+    public static List<CartItem> cart = new ArrayList<>();  // Stores cart items
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_products);  // Ensure this layout has the navigation drawer
+        setContentView(R.layout.nav_products);  // Ensures the layout has the navigation drawer
 
-        // Initialize UI elements
+        // Initialize UI elements and views
         ImageView menuButton = findViewById(R.id.menu_button);
-        productImage = findViewById(R.id.product_image);  // Initialize product image view
+        productImage = findViewById(R.id.product_image);  // Initializes the product image view
         productName = findViewById(R.id.product_name);
         productPrice = findViewById(R.id.product_price);
         productDescription = findViewById(R.id.product_description);
-        // Add this line for the button
-        Button addToCartButton = findViewById(R.id.add_to_cart_button);  // Initialize button
+        Button addToCartButton = findViewById(R.id.add_to_cart_button);  // Initializes the add to cart button
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        // Initialize Firebase
+        // Initialize Firebase authentication and Firestore
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
@@ -60,7 +59,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(v -> {
             String name = productName.getText().toString();
             double price = Double.parseDouble(productPrice.getText().toString().replace("R ", ""));
-            String imageUrl = "default_image_url";  // You can set this dynamically as well
+            String imageUrl = "default_image_url"; //gets image url
 
             // Check if item is already in the cart
             boolean itemExists = false;
@@ -139,7 +138,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                             // Fetch the data from the document
                             String name = documentSnapshot.getString("product_name");
                             double price = documentSnapshot.getDouble("price");
-                            String formattedPrice = String.format("R %.2f", price);  // Format price to 2 decimal places
+                            String formattedPrice = String.format("R %.2f", price);  // Formats price to 2 decimal places
                             String description = documentSnapshot.getString("description");
                             String imageUrl = documentSnapshot.getString("image_name");
 

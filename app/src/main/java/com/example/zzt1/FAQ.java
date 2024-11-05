@@ -25,8 +25,8 @@ public class FAQ extends AppCompatActivity {
             tvOrderOutOfStock, tvPaymentMethod,
             tvLegalAge, tvCancel;
 
-    private FirebaseAuth auth; // Firebase Auth instance
-    private DrawerLayout drawerLayout; // DrawerLayout instance
+    private FirebaseAuth auth; // Firebase Auth instance for user authentication
+    private DrawerLayout drawerLayout; // DrawerLayout instance for navigation drawer
 
 
 
@@ -36,8 +36,8 @@ public class FAQ extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_faq_activity);
 
-        // Initialize Firebase Auth instance
-        auth = FirebaseAuth.getInstance(); // Add this line
+        // Initialize Firebase Auth instance for user authentication
+        auth = FirebaseAuth.getInstance();
 
 
     // Set edge-to-edge support
@@ -51,17 +51,17 @@ public class FAQ extends AppCompatActivity {
 
 
 
-        // Check if user is logged in
+        // Check if user is logged in and redirect if not
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             finish(); // Redirect to Login activity if not logged in
             return;
         }
 
-        // Menu button to open navigation drawer
+        // Menu button to open navigation drawer when clicked on
         menuButton.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // Initialize buttons and text views
+        // Initialize buttons and text views for FAQ
         Button btnDeliveriesFAQ = findViewById(R.id.btnDeliveriesFAQ);
         Button btnAddictionHelpFAQ = findViewById(R.id.btnAddictionHelpFAQ);
         Button btnReturnFAQ = findViewById(R.id.btnReturnFAQ);
@@ -88,27 +88,27 @@ public class FAQ extends AppCompatActivity {
         btnCancelFAQ.setOnClickListener(v -> toggleVisibility(tvCancel));
 
 
-        // Set navigation item selection listener
+        // Set navigation item selection listener for navigation drawer
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
                 Toast.makeText(FAQ.this, "Home selected", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(FAQ.this, MainActivity.class); // Navigate to MainActivity
+                Intent intent = new Intent(FAQ.this, MainActivity.class); // navigates to main page
                 startActivity(intent);
                 finish(); // Close the current activity to avoid stacking
             }
 
             if (item.getItemId() == R.id.nav_booking) {
                 Intent intent = new Intent(FAQ.this, SecondActivity.class);
-                startActivity(intent);
+                startActivity(intent); // navigates to booking page if booking is selected
             }
             if (item.getItemId() == R.id.nav_faq) {
                 Intent intent = new Intent(FAQ.this, FAQ.class);
-                startActivity(intent);
+                startActivity(intent); // navigates to faq page if faq is selected
             }
 
             if (item.getItemId() == R.id.nav_cart) {
                 Intent intent = new Intent(FAQ.this, CartActivity.class);
-                startActivity(intent);
+                startActivity(intent); // navigates to cart page if cart is selected
             }
 
             if (item.getItemId() == R.id.nav_logout) {
@@ -116,7 +116,7 @@ public class FAQ extends AppCompatActivity {
                 Intent intent = new Intent(FAQ.this, login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                finish();
+                finish(); // logs user out when selected , redirects to signup page
             }
             // Close the drawer after selection
             drawerLayout.closeDrawer(GravityCompat.START);
